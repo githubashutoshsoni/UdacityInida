@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.kakashi.happybirthday.MainActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/birthday" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Happy Birthday"
+        android:textStyle="bold|italic"
+        android:paddingTop="8dp"
+        android:textColor="#319177"
+        android:layout_centerHorizontal="true"
+        android:textSize="30dp"
+        android:fontFamily="sans-serif-light"
+        android:id="@+id/happy_text_view" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Dear, Friend"
+        android:paddingLeft="16dp"
+        android:textStyle="bold|italic"
+        android:textColor="#FFA500"
+        android:layout_below="@id/happy_text_view"
+        android:textSize="25dp"
+        android:fontFamily="sans-serif-light"
+        android:id="@+id/dear_friend_textView" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Some friends are good, Some friends are true and some friends are for keeps. Just like you :)"
+        android:layout_below="@id/dear_friend_textView"
+        android:paddingTop="32dp"
+        android:paddingLeft="16dp"
+        android:textSize="25dp"
+        android:textStyle="italic"
+        android:textColor="#FF6347"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="From"
+        android:textStyle="bold|italic"
+        android:id="@+id/from_text_view"
+        android:layout_alignParentRight="true"
+        android:layout_above="@id/ashutosh_text_view"
+        android:paddingRight="16dp"
+        android:textSize="25dp"
+         android:textColor="#008000"
+        android:fontFamily="sans-serif-light"
+        />
+
+    <TextView
+        android:id="@+id/ashutosh_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:textStyle="bold|italic"
+        android:fontFamily="sans-serif-light"
+        android:text="Ashutosh"
+        android:textColor="#008080"
+        android:paddingRight="16dp"
+        android:paddingBottom="8dp"
+        android:textSize="25dp" />
+
+
+
+
+</RelativeLayout>
