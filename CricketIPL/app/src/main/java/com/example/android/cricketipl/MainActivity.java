@@ -50,8 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void update_csk_overs(){
-        double roundOff = (double) Math.round(overs_csk * 10) /10;
-        overs_csk=roundOff;
+
 
        if(overs_csk%10==6){
             overs_csk+=4;

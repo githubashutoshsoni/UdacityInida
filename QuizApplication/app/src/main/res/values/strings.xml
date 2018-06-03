@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">QuizApplication</string>
+    <string name="robert">Robert Downey jr</string>
+    <string name="bruce">Bruce Wayne</string>
+    <string name="jimmy">Jimmy simpson</string>
+    <string name="rodrigo">Rodrigo santoro</string>
+    <string name="submit">Submit</string>
+</resources>
+
