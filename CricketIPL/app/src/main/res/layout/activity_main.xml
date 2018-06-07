@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+       android:orientation="vertical"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,6 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="CSK"
+                android:layout_margin="8dp"
                 android:textStyle="bold"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
 
@@ -26,6 +33,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:text="SCORE:"
+                android:padding="8dp"
                 android:id="@+id/score_csk"
                 android:textStyle="bold"
                 android:layout_height="wrap_content" />
@@ -33,6 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Overs:"
+                android:padding="8dp"
                 android:textStyle="bold"
                 android:id="@+id/csk_overs"
                 />
@@ -48,25 +57,20 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/one_run_csk"
                 android:onClick="one_csk"
-                android:text="add 1 RUN" />
+                android:text="@string/one_run_csk" />
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/four_run_csk"
                 android:onClick="four_csk"
-                android:text="add 4 RUN"/>
+                android:text="@string/four_run_csk"/>
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/six_run_csk"
                 android:onClick="six_csk"
-                android:text="add 6 RUN"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/text_view_out_csk"
-                android:text="No 0ff wickets:"
-                />
+                android:text="add 6 run"/>
+
 
         </LinearLayout>
         <LinearLayout
@@ -80,12 +84,14 @@
                 android:layout_height="wrap_content"
                 android:text="MI"
                 android:textStyle="bold"
+                android:layout_margin="8dp"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="SCORE:"
+                android:padding="8dp"
                 android:textStyle="bold"
                android:id="@+id/score_mi"
                 />
@@ -93,6 +99,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Overs:"
+                android:padding="8dp"
                 android:id="@+id/mi_overs"
                 android:textStyle="bold"
                 />
@@ -122,31 +129,35 @@
                 android:id="@+id/six_run_mi"
                 android:onClick="six_mi"
                 android:text="add 6 RUN"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="NO of Wickets:"
-                android:id="@+id/text_view_out_mi"
-                />
+
         </LinearLayout>
 
     </LinearLayout>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="THE TEAM WON IS: "
-        android:textStyle="bold"
-        android:id="@+id/result_textView"
-        android:layout_above="@+id/result_button"
-       android:layout_centerInParent="true"
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:id="@+id/result_button"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:text="Result"
-        android:onClick="result"
-        />
-</RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THE TEAM WON IS: "
+                android:textStyle="bold"
+                android:layout_margin="8dp"
+                android:id="@+id/result_textView"
+                android:layout_above="@+id/result_button"
+                android:layout_centerInParent="true"
+                />
+            <Button
+
+                android:id="@+id/result_button"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:text="Result"
+                android:layout_marginTop="90dp"
+                android:onClick="result"
+                android:layout_width="wrap_content" />
+
+        </RelativeLayout>
+</LinearLayout>
+
+</ScrollView>

@@ -29,10 +29,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void out_csk(View v)
     {
-        TextView csk_text_out=(TextView)findViewById(R.id.text_view_out_csk);
+
         out_csk+=1;
         String out= String.valueOf(out_csk);
-        csk_text_out.setText(out);
+
         update_csk_overs();
         update_csk_score(0);
 
@@ -112,10 +112,10 @@ public class MainActivity extends AppCompatActivity {
 
     public void out_mi(View v)
     {
-        TextView mi_text_out=(TextView)findViewById(R.id.text_view_out_mi);
+
         out_mi+=1;
         String out= String.valueOf(out_mi);
-        mi_text_out.setText(out);
+
 
         update_mi_overs();
         update_mi_score(0);
