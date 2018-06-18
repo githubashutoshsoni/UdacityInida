@@ -20,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     TextView csk_overs_textView;
     TextView mi_overs_textView;
     TextView result;
-
+    boolean flag=false;
+    boolean flagcsk=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,32 +53,50 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void update_csk_overs() {
-
-
-        if (overs_csk % 10 == 6) {
+        if(flagcsk==false) {
+            if (overs_csk % 10 == 6) {
             overs_csk += 4;
-        } else {
+            } else {
             overs_csk += 1;
-        }
+            }
 
-        String string_overs_csk = String.valueOf(overs_csk / 10);
-        csk_overs_textView = findViewById(R.id.csk_overs);
-        csk_overs_textView.setText(string_overs_csk);
+            String string_overs_csk = String.valueOf(overs_csk / 10);
+            csk_overs_textView = findViewById(R.id.csk_overs);
+            csk_overs_textView.setText(string_overs_csk);
+        }
+        else{
+            overs_csk=0;
+            String string_overs_csk = String.valueOf(overs_csk);
+            csk_overs_textView = findViewById(R.id.csk_overs);
+            csk_overs_textView.setText(string_overs_csk);
+            flagcsk=false;
+        }
     }
 
     public void update_mi_overs() {
-        double roundOff = (double) Math.round(overs_mi * 10) / 10;
-        overs_mi = roundOff;
+        if(flag==false)
+        {
+            double roundOff = (double) Math.round(overs_mi * 10) / 10;
+            overs_mi = roundOff;
 
-        if (overs_mi % 10 == 6) {
-            overs_mi += 4;
-        } else {
-            overs_mi += 1;
+            if (overs_mi % 10 == 6) {
+                overs_mi += 4;
+            } else {
+                overs_mi += 1;
+            }
+            String string_overs_mi = String.valueOf(overs_mi / 10);
+            mi_overs_textView = findViewById(R.id.mi_overs);
+            mi_overs_textView.setText(string_overs_mi);
+        }
+        else{
+            overs_mi=0;
+            String string_overs_mi = String.valueOf(overs_mi);
+            mi_overs_textView = findViewById(R.id.mi_overs);
+            mi_overs_textView.setText(string_overs_mi);
+            flag=false;
         }
 
-        String string_overs_mi = String.valueOf(overs_mi / 10);
-        mi_overs_textView = findViewById(R.id.mi_overs);
-        mi_overs_textView.setText(string_overs_mi);
+
     }
 
     public void update_mi_score(int score) {
@@ -137,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resetButton(View v) {
+        flag= true;
+        flagcsk=true;
         out_mi = 0;
         out_csk = 0;
         overs_mi = (double) 0;
