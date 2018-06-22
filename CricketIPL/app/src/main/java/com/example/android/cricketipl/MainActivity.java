@@ -1,9 +1,11 @@
 package com.example.android.cricketipl;
 
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -22,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     TextView result;
     boolean flag=false;
     boolean flagcsk=false;
+    ImageView WinningTeamImageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -148,11 +151,25 @@ public class MainActivity extends AppCompatActivity {
         if (mi_score > csk_score) {
 
             result.setText("The result is: " + "MI");
+            WinningTeamImageView=(ImageView) findViewById(R.id.winning_team);
+            Drawable drawable=getResources().getDrawable(R.drawable.mi );
+            WinningTeamImageView.setImageDrawable(drawable);
         } else if (mi_score < csk_score) {
             result.setText("The result is: " + "CSK");
+            WinningTeamImageView=(ImageView) findViewById(R.id.winning_team);
+            Drawable drawable=getResources().getDrawable(R.drawable.csk);
+            WinningTeamImageView.setImageDrawable(drawable);
         } else {
             result.setText("DRAW");
         }
+
+    }
+    public void resultreset(){
+        result=findViewById(R.id.result_textView);
+        result.setText("The result is:");
+        WinningTeamImageView=(ImageView) findViewById(R.id.winning_team);
+        WinningTeamImageView.setImageResource(0);
+
     }
 
     public void resetButton(View v) {
@@ -168,6 +185,7 @@ public class MainActivity extends AppCompatActivity {
         update_csk_score(0);
         update_mi_overs();
         update_csk_overs();
+        resultreset();
     }
 
 }

@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">CricketIPL</string>
-    <string name="one_run_csk">add 1 run</string>
-    <string name="four_run_csk">add 4 run</string>
-    <string name="out">out</string>
+    <string name="one_run">add 1 run</string>
+    <string name="four_run">add 4 run</string>
+    <string name="six_run">add 6 run</string>
+    <string name="out">out!</string>
+    <string name="over">over:</string>
+    <string name="score">Score:</string>
+    <string name="reset">reset</string>
+    <string name="result">result</string>
+    <string name="csk">CSK</string>
+    <string name="mi">MI</string>
+    <string name="WON">Team Won is:</string>
+    <string name="cskImageDescription">CSK Image </string>
+    <string name="miImageDescription">MI Image</string>
 </resources>

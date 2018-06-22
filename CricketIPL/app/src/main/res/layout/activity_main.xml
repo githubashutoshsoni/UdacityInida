@@ -24,25 +24,30 @@
                     style="@style/yellowColorCSKHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="CSK"
-
-
+                    android:text="@string/csk"
                     />
-
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:contentDescription="@string/cskImageDescription"
+                    android:layout_height="100dp"
+                    android:src="@drawable/csk"
+                    android:layout_marginStart="16dp"
+                    />
                 <TextView
                     android:id="@+id/score_csk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="SCORE:"
+                    android:layout_margin="8dp"
+                    android:text="@string/score"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/csk_overs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="Overs:"
+                    android:layout_margin="8dp"
+                    android:text="@string/over"
+                    android:textAllCaps="true"
                     android:textStyle="bold" />
 
                 <Button
@@ -50,32 +55,37 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="out_csk"
-                    android:text="OUT!" />
+                    android:text="@string/out" />
 
                 <Button
                     android:id="@+id/one_run_csk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="one_csk"
-                    android:text="@string/one_run_csk" />
+                    android:text="@string/one_run" />
 
                 <Button
                     android:id="@+id/four_run_csk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="four_csk"
-                    android:text="@string/four_run_csk" />
+                    android:text="@string/four_run" />
 
                 <Button
                     android:id="@+id/six_run_csk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="six_csk"
-                    android:text="add 6 run" />
+                    android:text="@string/six_run" />
+
 
 
             </LinearLayout>
-
+            <View
+                android:layout_width="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_height="fill_parent"
+                android:background="#000000" />
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -86,23 +96,32 @@
                     style="@style/BlueColorMIHeader"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="MI"
+                    android:text="@string/mi"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:contentDescription="@string/miImageDescription"
+                    android:layout_height="100dp"
+                    android:src="@drawable/mi"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    />
 
                 <TextView
                     android:id="@+id/score_mi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="SCORE:"
+                    android:layout_margin="8dp"
+                    android:text="@string/score"
                     android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/mi_overs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp"
-                    android:text="Overs:"
+                    android:layout_margin="8dp"
+                    android:text="@string/over"
+                    android:textAllCaps="true"
                     android:textStyle="bold" />
 
                 <Button
@@ -110,14 +129,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="out_mi"
-                    android:text="OUT" />
+                    android:text="@string/out" />
 
                 <Button
                     android:id="@+id/one_run_mi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="one_mi"
-                    android:text="add 1 RUN"
+                    android:text="@string/one_run"
 
                     />
 
@@ -126,14 +145,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="four_mi"
-                    android:text="add 4 RUN" />
+                    android:text="@string/four_run" />
 
                 <Button
                     android:id="@+id/six_run_mi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick="six_mi"
-                    android:text="add 6 RUN" />
+                    android:text="@string/six_run" />
 
             </LinearLayout>
 
@@ -151,7 +170,7 @@
                 android:layout_above="@+id/result_button"
                 android:layout_centerInParent="true"
                 android:layout_margin="8dp"
-                android:text="THE TEAM WON IS: "
+                android:text="@string/WON"
                 android:textStyle="bold" />
 
             <Button
@@ -163,7 +182,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="90dp"
                 android:onClick="result"
-                android:text="Result" />
+                android:text="@string/result" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -171,7 +190,16 @@
                 android:layout_alignStart="@+id/result_button"
                 android:layout_marginTop="8dp"
                 android:onClick="resetButton"
-                android:text="reset" />
+                android:text="@string/reset" />
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="20dp"
+                android:id="@+id/winning_team"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+
+                />
 
         </RelativeLayout>
     </LinearLayout>
