@@ -8,4 +8,51 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <!-- Styling all the Images with these attributes -->
+    <style name="ImageStyle">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_margin">@dimen/dimen_8dp</item>
+        <item name="android:scaleType">fitXY</item>
+
+
+    </style>
+
+    <!-- Styling all the Questions with these attributes -->
+
+    <style name="Questions">
+        <item name="android:textSize">@dimen/dimen_20sp</item>
+        <item name="android:layout_margin">@dimen/dimen_8dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/rounded_corners</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/dimen_20dp</item>
+    </style>
+
+    <!--Styling all the Question-numbers with these attributes-->
+
+    <style name="QuestionNumber">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">italic</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:textSize">@dimen/dimen_24sp</item>
+        <item name="android:background">@drawable/rounded_corners_question_number</item>
+        <item name="android:layout_margin">@dimen/dimen_8dp</item>
+        <item name="android:textColor">@color/color_question_number</item>
+
+    </style>
+    <style name="button">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:background">@drawable/rounded_corners_submit_button</item>
+        <item name="android:layout_margin">@dimen/dimen_8dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
 </resources>

@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="common_border_color">#000000</color>
+    <color name="color_question_number">#F90F00</color>
+    <color name="color_submit_button">#234baf</color>
+    <color name="green">#00FF00</color>
+    <color name="red">#FF0000</color>
 </resources>

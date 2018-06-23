@@ -1,134 +1,307 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView android:layout_height="match_parent"
+    android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-
-        >
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Q:1"
-           android:textStyle="bold"
-           android:paddingLeft="10dp"
-           />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:background="@drawable/robert"
-        android:layout_margin="10dp"
-        android:scaleType="fitStart"
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FFDE03"
+    >
+    <TextView
+        android:text="@string/question_number_one"
+        style="@style/QuestionNumber"
         />
     <TextView
+        android:text="@string/question_one"
+        style="@style/Questions"
+        />
+    <ImageView
+        android:src="@drawable/robert"
+        style="@style/ImageStyle"
+        />
+    <ImageView
+        style="@style/ImageStyle"
+        android:src="@drawable/rodrigo"
+        />
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Name of this super star is: "
-        android:padding="10dp"
-        android:textStyle="bold"
-        android:textSize="20dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q1_option_one"
+            android:id="@+id/robert"
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q1_option_two"
+            android:id="@+id/rodrigo"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q1_option_three"
+            android:id="@+id/chris"
+
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q1_option_four"
+            android:id="@+id/james"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/question_number_two"
+
+        style="@style/QuestionNumber"
+
+        android:layout_margin="8dp"
+        />
+    <TextView
+        android:text="@string/question_two"
+        style="@style/Questions"
+        />
+    <ImageView
+        android:src="@drawable/madrid"
+        style="@style/ImageStyle"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q2_option_one"
+            android:id="@+id/asturias"
+
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q2_option_two"
+            android:id="@+id/navarre"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q2_option_three"
+            android:id="@+id/italy"
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q2_option_four"
+            android:id="@+id/madrid"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/question_number_three"
+        style="@style/QuestionNumber"
+        />
+    <TextView
+
+        android:text="@string/question_three"
+        style="@style/Questions"
+        />
+    <ImageView
+        android:src="@drawable/earth"
+        style="@style/ImageStyle"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q3_option_one"
+            android:id="@+id/diameter_of_earth"
+
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q3_option_two"
+            android:id="@+id/wrong1"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q3_option_three"
+            android:id="@+id/diameter_of_moon"
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q3_option_four"
+            android:id="@+id/wrong3"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/question_number_four"
+        style="@style/QuestionNumber"
+        />
+    <TextView
+        android:text="@string/question_four"
+        style="@style/Questions"
+        />
+    <ImageView
+        android:src="@drawable/myanmar"
+        style="@style/ImageStyle"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q4_option_one"
+            android:id="@+id/nineteenthirty"
+
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q4_option_two"
+            android:id="@+id/nineteen_thirty_seven"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q4_option_three"
+            android:id="@+id/nineteen_fourty_seven"
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q4_option_four"
+            android:id="@+id/nineteenthirtynine"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:text="@string/question_number_five"
+        style="@style/QuestionNumber"
+        />
+    <TextView
+        android:text="@string/question_five"
+        style="@style/Questions"
+        />
+    <ImageView
+        android:src="@drawable/bangladesh"
+        style="@style/ImageStyle"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q5_option_one"
+            android:id="@+id/bangladesh"
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q5_option_two"
+            android:id="@+id/bombay"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q5_option_three"
+            android:id="@+id/chennai"
+            />
+        <CheckBox
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="@string/q5_option_four"
+            android:id="@+id/delhi"
+            />
+    </LinearLayout>
+
+    <Button
+        android:text="@string/submit"
+        style="@style/button"
+        android:id="@+id/submit_button"
+        android:onClick="submit"
         />
     <TextView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose the right answer:"
-        android:padding="10dp"
-        android:textStyle="bold"
+        android:text="@string/score"
+        android:id="@+id/score"
+        android:layout_height="wrap_content" />
+    <Button
+        style="@style/button"
+        android:text="@string/reset"
+        android:layout_gravity="right"
+        android:onClick="reset"
         />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rober_check_box"
-            />
-        <TextView
-
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/robert"
-            android:textStyle="bold"
-            android:id="@+id/robert_downey_jr"
-            android:onClick="roberChoice"
-            android:textAllCaps="true"
-            
-            />
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/bruce"
-            android:textStyle="bold"
-            android:textAllCaps="true"
-            />
-
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-            <TextView
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="@string/jimmy"
-                android:textStyle="bold"
-                android:textAllCaps="true"
-                />
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/rodrigo"
-                android:textAllCaps="true"
-                android:textStyle="bold" />
-
-
-        </LinearLayout>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:background="#c0c0c0"
-
-            />
-
-    </LinearLayout>
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="2dp"
-            android:background="#c0c0c0"
-
-            />
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:text="@string/submit"
-
-            android:onClick="submitButton"
-
-            />
-    </RelativeLayout>
+</LinearLayout>
 
 </ScrollView>
