@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
          initialize();
-
     }
     public void initialize(){
         submitButton= (Button) findViewById(R.id.submit_button);
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         scoreTextView=(TextView) findViewById(R.id.score);
         esCheatsEditText=(EditText) findViewById(R.id.escheats);
     }
-
+    //Submit function runs when is clicked and score is caluculated.
     public void submit(View v) {
         if (robertCheckBox.isChecked() && rodrigoCheckBox.isChecked() && !chrisCheckBox.isChecked() &&!jamesCheckBox.isChecked() && !asturiasCheckBox.isChecked()) {
             score += 1;
@@ -84,54 +83,52 @@ public class MainActivity extends AppCompatActivity {
             if (asturiasCheckBox.isChecked() || navaCheckBox.isChecked() ) {
                 asturiasCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
                 navaCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-
             }
-
         }
         //tweleve thousand is the correct answer so it turns to green and score updates to 1
         if (diameterOfEarthCheckbox.isChecked()&&diameterOfmoonCheckBox.isChecked() && !wrong1CheckBox.isChecked() && !wrong3CheckBox.isChecked())
-        {       diameterOfEarthCheckbox.setBackgroundColor(mResources.getColor(R.color.green));
+        {   diameterOfEarthCheckbox.setBackgroundColor(mResources.getColor(R.color.green));
             diameterOfmoonCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
-                score += 1;
+            score += 1;
         }
-    else if(wrong1CheckBox.isChecked()||wrong3CheckBox.isChecked())
-    {
-        wrong3CheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-        
-        wrong1CheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-    }
-    if(bangladeshYearPartitionedCheckBox.isChecked() && pakistanPartitionCheckBOx.isChecked() && !ninetennthirtynineCheckBox.isChecked() && !nineteenthirtyCheckBox.isChecked())
-    {
-        score+=1;
-        bangladeshYearPartitionedCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
-        pakistanPartitionCheckBOx.setBackgroundColor(mResources.getColor(R.color.green));
-    }
-    else if (ninetennthirtynineCheckBox.isChecked()||nineteenthirtyCheckBox.isChecked())
+        //PROPER INDENTATION IS DONE.
+        else if(wrong1CheckBox.isChecked()||wrong3CheckBox.isChecked())
         {
+            wrong3CheckBox.setBackgroundColor(mResources.getColor(R.color.red));
+            wrong1CheckBox.setBackgroundColor(mResources.getColor(R.color.red));
+        }
+        if(bangladeshYearPartitionedCheckBox.isChecked() && pakistanPartitionCheckBOx.isChecked() && !ninetennthirtynineCheckBox.isChecked() && !nineteenthirtyCheckBox.isChecked())
+        {
+            score+=1;
+            bangladeshYearPartitionedCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
+            pakistanPartitionCheckBOx.setBackgroundColor(mResources.getColor(R.color.green));
+        }
+        else if (ninetennthirtynineCheckBox.isChecked()||nineteenthirtyCheckBox.isChecked()) {
             ninetennthirtynineCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-
             nineteenthirtyCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
         }
-    if(bangladeshRadioButton.isChecked())
-    {
-        score+=1;
-        bangladeshRadioButton.setBackgroundColor(mResources.getColor(R.color.green));
-    }
-    else if(bombayRadioButton.isChecked()) {
-        bombayRadioButton.setBackgroundColor(mResources.getColor(R.color.red));
-
-    }
-    if(esCheatsEditText.getText().toString().equals("ESCHEATS")){
+        if(bangladeshRadioButton.isChecked())
+        {
             score+=1;
-    }
-    scoreTextView.setText(mResources.getText(R.string.score)+String.valueOf(score));
-        Toast mToast= Toast.makeText(this, "your score is"+ Integer.toString(score)+"/6",Toast.LENGTH_SHORT);
-        mToast.show();
+            bangladeshRadioButton.setBackgroundColor(mResources.getColor(R.color.green));
+        }
+        else if(bombayRadioButton.isChecked()) {
+            bombayRadioButton.setBackgroundColor(mResources.getColor(R.color.red));
 
+        }
+        if(esCheatsEditText.getText().toString().equals("ESCHEATS")){
+                score+=1;
+        }
+        int wrongScore=6-score;
+        scoreTextView.setText(mResources.getText(R.string.score)+String.valueOf(score)+" Reset to play again once more :)");
+            Toast mToast= Toast.makeText(this, "your score is"+ Integer.toString(score)+"/6"+"WRONG ANSWERS ARE "+Integer.toString(wrongScore),Toast.LENGTH_LONG);
+            mToast.show();
+            submitButton.setEnabled(false);
     }
-//Reseting all the checkboxes to null.
+    //Reseting all the checkboxes to null.
     public void reset(View v)
     {
+        submitButton.setEnabled(true);
         robertCheckBox.setChecked(false);
         jamesCheckBox.setChecked(false);
         chrisCheckBox.setChecked(false);
@@ -152,6 +149,5 @@ public class MainActivity extends AppCompatActivity {
         asturiasCheckBox.setChecked(false);
         score=0;
         scoreTextView.setText(null);
-
     }
 }
