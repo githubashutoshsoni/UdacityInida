@@ -1,12 +1,17 @@
 package com.example.android.quizapplication;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -17,21 +22,20 @@ public class MainActivity extends AppCompatActivity {
     CheckBox diameterOfEarthCheckbox;
     CheckBox bangladeshYearPartitionedCheckBox;
     CheckBox pakistanPartitionCheckBOx;
-    CheckBox bangladeshCheckBox;
+    RadioButton bangladeshRadioButton;
     CheckBox rodrigoCheckBox;
     CheckBox chrisCheckBox;
     CheckBox jamesCheckBox;
     CheckBox asturiasCheckBox;
     CheckBox navaCheckBox;
-    CheckBox italyCheckBox;
+    CheckBox romeCheckBox;
     CheckBox wrong1CheckBox;
     CheckBox diameterOfmoonCheckBox;
     CheckBox wrong3CheckBox;
     CheckBox nineteenthirtyCheckBox;
     CheckBox ninetennthirtynineCheckBox;
-    CheckBox bombayCheckBox;
-    CheckBox delhiCheckBox;
-    CheckBox chennaiCheckBox;
+    RadioButton bombayRadioButton;
+    EditText esCheatsEditText;
     int score;
     TextView scoreTextView;
     Resources mResources;
@@ -48,42 +52,34 @@ public class MainActivity extends AppCompatActivity {
         madridCheckBox=(CheckBox) findViewById(R.id.madrid);
         diameterOfEarthCheckbox=(CheckBox) findViewById(R.id.diameter_of_earth);
         bangladeshYearPartitionedCheckBox=(CheckBox) findViewById(R.id.nineteen_thirty_seven);
-        bangladeshCheckBox=(CheckBox) findViewById(R.id.bangladesh);
+        bangladeshRadioButton=(RadioButton) findViewById(R.id.bangladesh);
         rodrigoCheckBox=(CheckBox) findViewById(R.id.rodrigo);
         chrisCheckBox=(CheckBox) findViewById(R.id.chris);
         jamesCheckBox=(CheckBox) findViewById(R.id.james);
         asturiasCheckBox=(CheckBox) findViewById(R.id.asturias);
         navaCheckBox=(CheckBox) findViewById(R.id.navarre);
-        italyCheckBox=(CheckBox) findViewById(R.id.italy);
+        romeCheckBox=(CheckBox) findViewById(R.id.rome);
         wrong1CheckBox=(CheckBox) findViewById(R.id.wrong1);
         diameterOfmoonCheckBox= (CheckBox) findViewById(R.id.diameter_of_moon);
         wrong3CheckBox=(CheckBox) findViewById(R.id.wrong3);
         nineteenthirtyCheckBox=(CheckBox) findViewById(R.id.nineteenthirty);//some random number
         ninetennthirtynineCheckBox=(CheckBox) findViewById(R.id.nineteenthirtynine);//some random number
-        bombayCheckBox=(CheckBox) findViewById(R.id.bombay);
-        delhiCheckBox=(CheckBox) findViewById(R.id.delhi);
-        chennaiCheckBox=(CheckBox) findViewById(R.id.chennai);
+        bombayRadioButton=(RadioButton) findViewById(R.id.bombay);
         pakistanPartitionCheckBOx=(CheckBox) findViewById(R.id.nineteen_fourty_seven);
         mResources=getResources();
         scoreTextView=(TextView) findViewById(R.id.score);
+        esCheatsEditText=(EditText) findViewById(R.id.escheats);
     }
 
     public void submit(View v) {
-        if (robertCheckBox.isChecked()) {
+        if (robertCheckBox.isChecked() && rodrigoCheckBox.isChecked() && !chrisCheckBox.isChecked() &&!jamesCheckBox.isChecked() && !asturiasCheckBox.isChecked()) {
             score += 1;
             robertCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
-        } else if (rodrigoCheckBox.isChecked() || chrisCheckBox.isChecked() || jamesCheckBox.isChecked() || asturiasCheckBox.isChecked()) {
-            if (rodrigoCheckBox.isChecked()) {
-                rodrigoCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-                chrisCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-                jamesCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-                asturiasCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-            }
         }
-        if (madridCheckBox.isChecked()&& italyCheckBox.isChecked()) {
+        if (madridCheckBox.isChecked()&& romeCheckBox.isChecked() && !navaCheckBox.isChecked() && !asturiasCheckBox.isChecked()) {
             score += 1;
             madridCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
-            italyCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
+            romeCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
         } else {
             if (asturiasCheckBox.isChecked() || navaCheckBox.isChecked() ) {
                 asturiasCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
@@ -93,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
         }
         //tweleve thousand is the correct answer so it turns to green and score updates to 1
-        if (diameterOfEarthCheckbox.isChecked()&&diameterOfmoonCheckBox.isChecked())
+        if (diameterOfEarthCheckbox.isChecked()&&diameterOfmoonCheckBox.isChecked() && !wrong1CheckBox.isChecked() && !wrong3CheckBox.isChecked())
         {       diameterOfEarthCheckbox.setBackgroundColor(mResources.getColor(R.color.green));
             diameterOfmoonCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
                 score += 1;
@@ -104,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         
         wrong1CheckBox.setBackgroundColor(mResources.getColor(R.color.red));
     }
-    if(bangladeshYearPartitionedCheckBox.isChecked() && pakistanPartitionCheckBOx.isChecked())
+    if(bangladeshYearPartitionedCheckBox.isChecked() && pakistanPartitionCheckBOx.isChecked() && !ninetennthirtynineCheckBox.isChecked() && !nineteenthirtyCheckBox.isChecked())
     {
         score+=1;
         bangladeshYearPartitionedCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
@@ -116,17 +112,22 @@ public class MainActivity extends AppCompatActivity {
 
             nineteenthirtyCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
         }
-    if(bangladeshCheckBox.isChecked())
+    if(bangladeshRadioButton.isChecked())
     {
         score+=1;
-        bangladeshCheckBox.setBackgroundColor(mResources.getColor(R.color.green));
+        bangladeshRadioButton.setBackgroundColor(mResources.getColor(R.color.green));
     }
-    else if(bombayCheckBox.isChecked()||chennaiCheckBox.isChecked()||delhiCheckBox.isChecked()) {
-        bombayCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-        chennaiCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
-        delhiCheckBox.setBackgroundColor(mResources.getColor(R.color.red));
+    else if(bombayRadioButton.isChecked()) {
+        bombayRadioButton.setBackgroundColor(mResources.getColor(R.color.red));
+
+    }
+    if(esCheatsEditText.getText().toString().equals("ESCHEATS")){
+            score+=1;
     }
     scoreTextView.setText(mResources.getText(R.string.score)+String.valueOf(score));
+        Toast mToast= Toast.makeText(this, "your score is"+ Integer.toString(score)+"/6",Toast.LENGTH_SHORT);
+        mToast.show();
+
     }
 //Reseting all the checkboxes to null.
     public void reset(View v)
@@ -135,10 +136,8 @@ public class MainActivity extends AppCompatActivity {
         jamesCheckBox.setChecked(false);
         chrisCheckBox.setChecked(false);
         rodrigoCheckBox.setChecked(false);
-        delhiCheckBox.setChecked(false);
-        chennaiCheckBox.setChecked(false);
-        bombayCheckBox.setChecked(false);
-        bangladeshCheckBox.setChecked(false);
+        bombayRadioButton.setChecked(false);
+        bangladeshRadioButton.setChecked(false);
         nineteenthirtyCheckBox.setChecked(false);
         pakistanPartitionCheckBOx.setChecked(false);
         ninetennthirtynineCheckBox.setChecked(false);
@@ -147,11 +146,12 @@ public class MainActivity extends AppCompatActivity {
         diameterOfmoonCheckBox.setChecked(false);
         wrong3CheckBox.setChecked(false);
         diameterOfEarthCheckbox.setChecked(false);
-        italyCheckBox.setChecked(false);
+        romeCheckBox.setChecked(false);
         navaCheckBox.setChecked(false);
         madridCheckBox.setChecked(false);
         asturiasCheckBox.setChecked(false);
         score=0;
+        scoreTextView.setText(null);
 
     }
 }

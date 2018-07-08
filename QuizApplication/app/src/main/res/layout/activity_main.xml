@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/q2_option_three"
-            android:id="@+id/italy"
+            android:id="@+id/rome"
             />
         <CheckBox
             android:layout_width="0dp"
@@ -249,48 +249,42 @@
         android:layout_weight="1"
         android:orientation="horizontal"
         android:layout_height="wrap_content">
-        <CheckBox
-            android:layout_width="0dp"
-            android:layout_weight="1"
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <RadioButton
+
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/q5_option_one"
             android:id="@+id/bangladesh"
             />
-        <CheckBox
-            android:layout_width="0dp"
-            android:layout_weight="1"
+        <RadioButton
+           android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/q5_option_two"
             android:id="@+id/bombay"
             />
+    </RadioGroup>
     </LinearLayout>
-    <LinearLayout
+    <TextView
+        style="@style/Questions"
+        android:text="@string/question_six"
+        />
+    <EditText
         android:layout_width="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_height="wrap_content">
-        <CheckBox
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/q5_option_three"
-            android:id="@+id/chennai"
-            />
-        <CheckBox
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="@string/q5_option_four"
-            android:id="@+id/delhi"
-            />
-    </LinearLayout>
-
+        android:layout_height="wrap_content"
+        android:id="@+id/escheats"
+        android:textAllCaps="true"
+        android:inputType="textCapCharacters"
+        />
     <Button
         android:text="@string/submit"
         style="@style/button"
         android:id="@+id/submit_button"
         android:onClick="submit"
         />
+
     <TextView
         android:layout_width="wrap_content"
         android:text="@string/score"
@@ -302,6 +296,7 @@
         android:layout_gravity="right"
         android:onClick="reset"
         />
+
 </LinearLayout>
 
 </ScrollView>

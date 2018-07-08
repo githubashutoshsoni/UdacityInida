@@ -7,6 +7,7 @@
     <string name="question_number_three">Question 3</string>
     <string name="question_number_four">Question 4</string>
     <string name="question_number_five">Question 5</string>
+    <string name="question_nubmer_six">Question 6</string>
 
 
     <string name="question_one">Who are these popular Actors?</string>
@@ -14,7 +15,7 @@
     <string name="question_three">What is the diameter of Earth and moon?</string>
     <string name="question_four">When Burma(Myanmar) and Pakistan were separated from India?</string>
     <string name="question_five">Which country came into existence after Indo-Pak War of 1971?</string>
-
+    <string name="question_six">The assets of a dead man without heir or will undertaken by the state is called ?(Answer in Uppercase only)</string>
     <string name="q1_option_one">Robert Downey Jr</string>
     <string name="q1_option_two">Rodrigo Santoro</string>
     <string name="q1_option_three">Chris Evans</string>
@@ -22,7 +23,7 @@
 
     <string name="q2_option_one">Asturias</string>
     <string name="q2_option_two">Navarre</string>
-    <string name="q2_option_three">Italy</string>
+    <string name="q2_option_three">Rome</string>
     <string name="q2_option_four">Madrid</string>
 
     <string name="q3_option_one">12,742 km</string>
