@@ -23,7 +23,7 @@ public class musicAdapter extends ArrayAdapter<musicDetails> {
     musicDetails currentMusic= getItem(position);
         if(listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.activity_arjith_singh, parent, false);
+                    R.layout.music_list_format, parent, false);
         }
         TextView songNameTextView= (TextView)listItemView.findViewById(R.id.name_of_song) ;
         songNameTextView.setText(currentMusic.getNameOfSong());

@@ -19,12 +19,12 @@
         <activity
             android:name=".arjithSingh"
             android:label="@string/title_activity_arjith_singh"
-            android:theme="@style/AppTheme.NoActionBar" />
-
-        <activity android:name=".adamLavine"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".adamLevine"
             android:label="@string/title_activity_adam_lavine"
-            android:theme="@style/AppTheme.NoActionBar"
-            ></activity>
+            android:theme="@style/AppTheme" />
+
     </application>
 
 </manifest>

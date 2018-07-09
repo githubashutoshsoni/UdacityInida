@@ -1,14 +1,16 @@
 <resources>
     <string name="app_name">Musical Structure</string>
     <string name="title_activity_arjith_singh">Arjith Singh</string>
-    <string name="title_activity_adam_lavine">Adam Lavine</string>
-    <string name="Album_lost_star">Album:Lost Star</string>
-    <string name="album_release_lost_star">Year:2014</string>
-    <string name="artist_adam_name">Artist:Adam lavine</string>
-    <string name="album_best_collection_arjith">Album:Best Collection</string>
-    <string name="artist_arjith_name">Arjith Singh</string>
-    <string name="album_release_top_50">2015</string>
-    <string name="album_select">Select An Album</string>
+    <string name="title_activity_adam_lavine">Adam Levine</string>
+    <string name="Album_lost_star"><u>Album:Lost Star</u></string>
+    <string name="album_release_lost_star"><u>Year:2014</u></string>
+    <string name="artist_adam_name"><u>Artist:Adam levine</u></string>
+    <string name="album_best_collection_arjith"><u>Best Collection</u></string>
+    <string name="artist_arjith_name"><u>Arjith Singh</u></string>
+    <string name="album_release_top_50"><u>2015</u></string>
+    <string name="album_select"><u>Select An Album</u> </string>
+    <string name="song_name"><u>Name</u> </string>
+    <string name="song_length">Song Length</string>
     <string name="content_description_adam_levine">Image of lost star </string>
     <string name="content_description_arjith_singh">Image of Arjith Singh</string>
     <string name="content_description_music_icon">Just an image of a music</string>

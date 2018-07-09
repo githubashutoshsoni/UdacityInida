@@ -8,4 +8,5 @@
     <color name="color_submit_button">#234baf</color>
     <color name="green">#00FF00</color>
     <color name="red">#FF0000</color>
+    <color name="orange">#ffa500</color>
 </resources>

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         adamLevineImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent adamIntent= new Intent(MainActivity.this,adamLavine.class);
+                Intent adamIntent= new Intent(MainActivity.this,adamLevine.class);
                 startActivity(adamIntent);
             }
         });
