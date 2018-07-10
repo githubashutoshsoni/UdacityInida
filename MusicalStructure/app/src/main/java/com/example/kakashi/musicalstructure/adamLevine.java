@@ -13,8 +13,12 @@ public class adamLevine extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_music);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         ArrayList<musicDetails> musicDetails= new ArrayList<>();
         //adding music details using custom list
         musicDetails.add(new musicDetails("girls like you","2:30"));

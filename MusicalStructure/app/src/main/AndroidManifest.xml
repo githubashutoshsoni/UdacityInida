@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,10 +20,12 @@
         <activity
             android:name=".arjithSingh"
             android:label="@string/title_activity_arjith_singh"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme" />
         <activity
             android:name=".adamLevine"
             android:label="@string/title_activity_adam_lavine"
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme" />
 
     </application>

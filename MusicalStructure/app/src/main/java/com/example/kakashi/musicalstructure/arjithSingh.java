@@ -16,6 +16,9 @@ public class arjithSingh extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_music);
         //ArrayList is defined with musicDetails as it's generic type
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
         ArrayList<musicDetails> musicDetails= new ArrayList<>();
         musicDetails.add(new musicDetails("Tum Hi ho","2:30"));
         musicDetails.add(new musicDetails("Sanam re","3:30"));
