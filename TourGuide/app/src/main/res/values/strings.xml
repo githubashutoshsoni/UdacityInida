@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">TourGuide</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hello_this_is_it">hello</string>
+    <string name="historical_site">Historical</string>
+    <string name="restaurant">Restaurants</string>
+    <string name="temples">Temples</string>
+    <string name="park">Park</string>
+    <string name="vivekanada_house_historical">Vivekananda House</string>
+    <string name="semmozhi_poonga_historical">Semmozhi Poonga</string>
+    <string name="government_chennai_historical">Government Museum Chennai</string>
+    <string name="fort_st_george_historical">Fort St George</string>
+    <string name="bharahiar_illam_historical">Bharathiar Illam</string>
+    <string name="kapaleeswarar_historical">Arulmigu Kapaleeswarar Temple</string>
+    <string name="address_semmozhi_poonga">Teynampet, Chennai</string>
+    <string name="address_vivek_ananda">Triplicane</string>
+    <string name="address_government_museum">Vinayaka Nagar Colony, Mylapore</string>
+    <string name="address_fort_st">Golden Colony, Ambattur Industrial Estate</string>
+    <string name="time_vivek_ananda">10AM–12:30PM, 3–7:30PM</string>
+    <string name="time_gmc">10AM–7:30PM</string>
+    <string name="time_ambattur">10AM–7:30PM</string>
+    <string name="time_bharat">10AM–7:30PM</string>
+    <string name="time_ambattur_arch">10AM–7:30PM</string>
+    <string name="time_kapaleeswarar">10AM–7:30PM</string>
+    <string name="name_of_the_place">Place:</string>
+    <string name="time_from_and_to">Time:From And To</string>
+    <string name="location_or_address">Location:</string>
+</resources>
