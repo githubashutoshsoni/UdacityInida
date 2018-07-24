@@ -25,4 +25,10 @@
     <string name="name_of_the_place">Place:</string>
     <string name="time_from_and_to">Time:From And To</string>
     <string name="location_or_address">Location:</string>
+    <string name="splash_screen_Text">Welcome to Chennai</string>
+    <string name="time_material_icon">This is time material icon</string>
+    <string name="time">Time:</string>
+    <string name="place_id">place id</string>
+    <string name="explore">Explore!</string>
+    <string name="place_simple">Place:</string>
 </resources>

@@ -27,9 +27,9 @@ import butterknife.ButterKnife;
  */
 public class HistoricalFragment extends Fragment {
     MediaPlayer mediaPlayer;
-    private boolean isOpen=false;
-    private ConstraintSet layout1,layout2;
-  //  @BindView(R.id.constraint) ConstraintLayout constraintLayout;
+//    private boolean isOpen=false;
+//    private ConstraintSet layout1,layout2;
+//   @BindView(R.id.constraint) ConstraintLayout constraintLayout;
     public HistoricalFragment() {
         // Required empty public constructor
     }
@@ -49,17 +49,16 @@ public class HistoricalFragment extends Fragment {
         PlacesAdapter placesAdapter= new PlacesAdapter(getActivity(),places,R.color.colorPrimaryDark);
         final ListView listView= (ListView) rootView.findViewById(R.id.list_items);
         listView.setAdapter(placesAdapter);
-        //        layout1= new ConstraintSet();
-        //        layout2= new ConstraintSet();
-        //        I have error here. :/
+//                layout1= new ConstraintSet();
+//                layout2= new ConstraintSet();
 
-       // layout2.clone(getActivity(),R.layout.expanded_location);
-       // layout1.clone(constraintLayout);
 
+  /*      layout2.clone(getActivity(),R.layout.expanded_location);
+        layout1.clone(constraintLayout);
 
 
         //Please remove the following comment and check what I am doing wrong.
-       /* listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Places currentPlaces= places.get(i);
@@ -77,8 +76,7 @@ public class HistoricalFragment extends Fragment {
                 }
             }
         });
-       ButterKnife.bind(this, rootView);
-        */
+       ButterKnife.bind(this, rootView);*/
         return  rootView;
     }
 }
