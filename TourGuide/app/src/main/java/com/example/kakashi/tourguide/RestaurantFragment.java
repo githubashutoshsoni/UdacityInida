@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class RestaurantFragment extends Fragment {
-    MediaPlayer mediaPlayer;
+
 
     public RestaurantFragment() {
         // Required empty public constructor
@@ -31,10 +31,10 @@ public class RestaurantFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.list_items, container, false);
         final ArrayList<Places> places= new ArrayList<Places>();
-        places.add(new Places(getString(R.string.vivekanada_house_historical),getString(R.string.time_vivek_ananda),getString(R.string.address_vivek_ananda),R.drawable.vivekananda_house_));
-        places.add(new Places(getString(R.string.semmozhi_poonga_historical),getString(R.string.time_gmc),getString(R.string.address_semmozhi_poonga),R.drawable.semmozi_poonga));
-        places.add(new Places(getString(R.string.government_chennai_historical),getString(R.string.time_ambattur),getString(R.string.address_government_museum),R.drawable.government_museum));
-        places.add(new Places(getString(R.string.fort_st_george_historical),getString(R.string.time_ambattur),getString(R.string.address_fort_st),R.drawable.fort_st_george));
+        places.add(new Places(getString(R.string.ramada_name),getString(R.string.time_ramada),"TP street Chennai",R.drawable.ramada_plaza_chennai));
+        places.add(new Places(getString(R.string.radisson_name),getString(R.string.time_raddisson),"TP street Chennai",R.drawable.radisum));
+        places.add(new Places(getString(R.string.leela_palace_name),getString(R.string.leela_palace_time),"",R.drawable.leelaplalace));
+
         PlacesAdapter placesAdapter= new PlacesAdapter(getActivity(),places,R.color.colorPrimaryDark);
         final ListView listView= (ListView) rootView.findViewById(R.id.list_items);
         listView.setAdapter(placesAdapter);

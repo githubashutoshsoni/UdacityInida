@@ -8,12 +8,12 @@ public class Earthquake {
     private Long time;
     private String url;
 
-    public Earthquake(String mMagnitude, String place, Long time) {
+    public Earthquake(String mMagnitude, String place, Long time, String url) {
         this.mMagnitude = mMagnitude;
         this.place = place;
         this.time = time;
+        this.url = url;
     }
-
 
     public String getmMagnitude() {
         return mMagnitude;

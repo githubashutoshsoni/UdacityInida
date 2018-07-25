@@ -45,9 +45,10 @@ public final class QueryUtils {
                 String magnitude= properties.getString("mag");
                 String location= properties.getString("place");
                 Long time= properties.getLong("time");
+                String url= properties.getString("url");
                 SimpleDateFormat dateFormat= new SimpleDateFormat("EEE, MMM d, ''yy");
                 
-                Earthquake earthquake= new Earthquake(magnitude,location,time);
+                Earthquake earthquake= new Earthquake(magnitude,location,time,url);
                 earthquakes.add(earthquake);
             }
             // TODO: Parse the response given by the SAMPLE_JSON_RESPONSE string and
@@ -59,11 +60,7 @@ public final class QueryUtils {
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
         }
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
 
         // Return the list of earthquakes
         return earthquakes;

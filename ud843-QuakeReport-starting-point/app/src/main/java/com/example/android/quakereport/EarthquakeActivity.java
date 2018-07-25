@@ -39,37 +39,53 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 {
     ProgressBar progressBar;
     public static final String LOG_TAG = EarthquakeActivity.class.getName();
-    private EarthQuakeAdapter mAdapter;
+
     private TextView mEmptyStateTextView;
+     ListView earthquakeListView;
+    EarthQuakeAdapter mAdapter;
     private static final int EARTHQUAKE_LOADER_ID = 1;
     private static final String USGS_REQUEST_URL =
             "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&orderby=time&minmag=6&limit=10";
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-            ListView earthquakeListView = (ListView) findViewById(R.id.list);
-
-        mAdapter = new EarthQuakeAdapter(this, new ArrayList<Earthquake>());
+        earthquakeListView = (ListView) findViewById(R.id.list);
 
 
+       mAdapter = new EarthQuakeAdapter(this, new ArrayList<Earthquake>());
         earthquakeListView.setAdapter(mAdapter);
-
-        earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+       earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // Find the current earthquake that was clicked on
                 Earthquake currentEarthquake = mAdapter.getItem(position);
+
+                // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri earthquakeUri = Uri.parse(currentEarthquake.getURL());
+
+                // Create a new intent to view the earthquake URI
                 Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+
+                // Send the intent to launch a new activity
                 startActivity(websiteIntent);
             }
         });
+
+
+
+
+
         LoaderManager loaderManager = getLoaderManager();
         loaderManager.initLoader(EARTHQUAKE_LOADER_ID, null, this);
         mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
         earthquakeListView.setEmptyView(mEmptyStateTextView);
+
     }
 
     @Override

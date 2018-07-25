@@ -15,14 +15,14 @@ public class CategoryAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        if (i == 1)
+        if (i == 0)
             return new HistoricalFragment();
-        else if (i == 2)
-            return new HistoricalFragment();
-        else if(i==3)
-            return new HistoricalFragment();
+        else if (i == 1)
+            return new RestaurantFragment();
+        else if(i==2)
+            return new ParkFragment();
         else
-            return new HistoricalFragment();
+            return new TempleFragment();
 
     }
 

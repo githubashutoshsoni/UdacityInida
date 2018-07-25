@@ -37,7 +37,6 @@ public class EarthQuakeAdapter extends ArrayAdapter<Earthquake> {
         TextView dateView = (TextView) convertView.findViewById(R.id.date);
         String formattedDate = formatDate(dateObject);
         dateView.setText(formattedDate);
-
         TextView timeView = (TextView) convertView.findViewById(R.id.time);
         // Format the time string (i.e. "4:30PM")
         String formattedTime = formatTime(dateObject);
