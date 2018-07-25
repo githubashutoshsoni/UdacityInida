@@ -26,7 +26,6 @@ import butterknife.ButterKnife;
  * A simple {@link Fragment} subclass.
  */
 public class ParkFragment extends Fragment {
-    MediaPlayer mediaPlayer;
 
     public ParkFragment() {
     }
@@ -35,7 +34,6 @@ public class ParkFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View rootView= inflater.inflate(R.layout.list_items, container, false);
         final ArrayList<Places> places= new ArrayList<Places>();

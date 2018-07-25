@@ -21,14 +21,13 @@ public class RestaurantFragment extends Fragment {
 
 
     public RestaurantFragment() {
-        // Required empty public constructor
+
     }
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.list_items, container, false);
         final ArrayList<Places> places= new ArrayList<Places>();
         places.add(new Places(getString(R.string.ramada_name),getString(R.string.time_ramada),"TP street Chennai",R.drawable.ramada_plaza_chennai));
