@@ -43,6 +43,7 @@ public class ParkFragment extends Fragment {
         places.add(new Places(getString(R.string.guindy_national_park_name),getString(R.string.guindy_time),getString(R.string.guindy_location),R.drawable.guindy_park));
 
         PlacesAdapter placesAdapter= new PlacesAdapter(getActivity(),places,R.color.colorPrimaryDark);
+
         final ListView listView= (ListView) rootView.findViewById(R.id.list_items);
         listView.setAdapter(placesAdapter);
 
