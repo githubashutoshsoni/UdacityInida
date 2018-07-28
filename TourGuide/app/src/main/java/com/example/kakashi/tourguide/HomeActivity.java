@@ -16,7 +16,7 @@ public class HomeActivity extends AppCompatActivity {
             public void run() {
                 finish();
             }
-        },4000);
+        },1000);
 
     }
 }

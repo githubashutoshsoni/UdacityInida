@@ -1,8 +1,10 @@
 package com.example.kakashi.tourguide;
 
+import android.app.ActionBar;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -46,8 +48,9 @@ public class PlacesAdapter extends ArrayAdapter<Places> {
             ImageView imageView = convertView.findViewById(R.id.imageView);
             imageView.setVisibility(View.GONE);
         }
-
-
+        View text_container= convertView.findViewById(R.id.text_container);
+        int color= ContextCompat.getColor(getContext(),mColorResourceId);
+        text_container.setBackgroundColor(color);
 
         return convertView;
     }
