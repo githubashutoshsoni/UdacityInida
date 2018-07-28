@@ -6,6 +6,20 @@ public class Places {
     private String mLocation;
     private int mImageResourceId= CHECK_IMAGE_STATUS;
     private static final int CHECK_IMAGE_STATUS=-1;
+    private String mDetails;
+
+    public String getmDetails() {
+        return mDetails;
+    }
+
+    public Places(String mName, String mTime, String mLocation, int mImageResourceId, String mDetails) {
+        this.mName = mName;
+        this.mTime = mTime;
+        this.mLocation = mLocation;
+        this.mImageResourceId = mImageResourceId;
+        this.mDetails = mDetails;
+    }
+
     Places(String name, String time, String location, int imageResourceID){
         mName=name;
         mTime=time;

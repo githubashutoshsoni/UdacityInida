@@ -48,10 +48,12 @@ public class PlacesAdapter extends ArrayAdapter<Places> {
             ImageView imageView = convertView.findViewById(R.id.imageView);
             imageView.setVisibility(View.GONE);
         }
+
+
         View text_container= convertView.findViewById(R.id.text_container);
         int color= ContextCompat.getColor(getContext(),mColorResourceId);
         text_container.setBackgroundColor(color);
 
-        return convertView;
+       return convertView;
     }
 }
