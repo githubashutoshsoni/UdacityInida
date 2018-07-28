@@ -10,6 +10,7 @@ import android.support.constraint.ConstraintSet;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.transition.TransitionManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +42,7 @@ public class HistoricalFragment extends Fragment {
 
         View rootView= inflater.inflate(R.layout.list_items, container, false);
         final ArrayList<Places> places= new ArrayList<Places>();
-
+        String TAG= 
         places.add(new Places(getString(R.string.vivekanada_house_historical),getString(R.string.time_vivek_ananda),getString(R.string.address_vivek_ananda),R.drawable.vivekananda_house_,"this "));
         places.add(new Places(getString(R.string.semmozhi_poonga_historical),getString(R.string.time_gmc),getString(R.string.address_semmozhi_poonga),R.drawable.semmozi_poonga));
         places.add(new Places(getString(R.string.government_chennai_historical),getString(R.string.time_ambattur),getString(R.string.address_government_museum),R.drawable.government_museum));
@@ -54,6 +55,7 @@ public class HistoricalFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Log.i("sometag", "onItemClick: fine working :)");
                 Places place = places.get(i);
                 Intent intent= new Intent(getContext(),HistoricalFragment.class);
                 intent.putExtra("description",place.getmDetails());
