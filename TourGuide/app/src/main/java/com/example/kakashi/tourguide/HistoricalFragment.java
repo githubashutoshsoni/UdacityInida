@@ -42,7 +42,7 @@ public class HistoricalFragment extends Fragment {
 
         View rootView= inflater.inflate(R.layout.list_items, container, false);
         final ArrayList<Places> places= new ArrayList<Places>();
-        String TAG= 
+
         places.add(new Places(getString(R.string.vivekanada_house_historical),getString(R.string.time_vivek_ananda),getString(R.string.address_vivek_ananda),R.drawable.vivekananda_house_,"this "));
         places.add(new Places(getString(R.string.semmozhi_poonga_historical),getString(R.string.time_gmc),getString(R.string.address_semmozhi_poonga),R.drawable.semmozi_poonga));
         places.add(new Places(getString(R.string.government_chennai_historical),getString(R.string.time_ambattur),getString(R.string.address_government_museum),R.drawable.government_museum));
