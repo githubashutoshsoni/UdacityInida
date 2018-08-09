@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/network_setting_title"
+    ><!--
+    <ListPreference
+        android:title="location"
+        android:key="@string/location_wise_key"
+        android:entries=""
+        android:entryValues=""
+        android:defaultValue=""
+
+        /-->
+</PreferenceScreen>
