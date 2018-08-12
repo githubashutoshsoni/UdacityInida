@@ -17,8 +17,6 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import android.text.TextUtils;
 
-import com.example.kakashi.newsapplication.News;
-
 import java.util.List;
 
 /**
@@ -89,7 +87,7 @@ public final class QueryUtils {
             urlConnection.connect();
             // If the request was successful (response code 200),
             // then read the input stream and parse the response.
-            if (urlConnection.getResponseCode() == 200) {
+        if (urlConnection.getResponseCode() == urlConnection.HTTP_OK) {
                 inputStream = urlConnection.getInputStream();
                 jsonResponse = readFromStream(inputStream);
             } else {
@@ -136,7 +134,7 @@ public final class QueryUtils {
             return null;
         }
 
-        // Create an empty ArrayList that we can start adding earthquakes to
+        // Create an empty ArrayList that we can start adding Networks to
         List<News> news = new ArrayList<>();
 
          try {
@@ -144,24 +142,36 @@ public final class QueryUtils {
             JSONObject baseJsonResponse = new JSONObject(newsJSON);
             JSONObject jsonResponse= baseJsonResponse.getJSONObject("response");
             // Extract the JSONArray associated with the key called "features",
-            // which represents a list of features (or earthquakes).
+            // which represents a list of features (or Networks).
             JSONArray newsResultsArray = jsonResponse.getJSONArray("results");
+             String authorName= "";
+             String date="";
+             StringBuilder authors= new StringBuilder();
 
-            // For each earthquake in the newsResultsArray, create an {@link Earthquake} object
+             // For each earthquake in the newsResultsArray, create an {@link Earthquake} object
             for (int i = 0; i < newsResultsArray.length(); i++) {
 
-                // Get a single earthquake at position i within the list of earthquakes
+                // Get a single earthquake at position i within the list of Networks
                 JSONObject currentNews = newsResultsArray.getJSONObject(i);
+                JSONArray tagsJSONArray= currentNews.getJSONArray("tags");
 
+                for(int j=0;j<tagsJSONArray.length();j++)
+                {
+                    JSONObject tagsObject= tagsJSONArray.getJSONObject(j);
+                    authorName = tagsObject.getString("webTitle");
+                    authors.append(authorName+"    ");
+                }
+
+                date=currentNews.getString("webPublicationDate");
+                authorName= authors.toString();
 
                 String title = currentNews.getString("webTitle");
                 String sectionName = currentNews.getString("sectionName");
                 String URL = currentNews.getString("webUrl");
+                //emptying authors for the next iteration.
+                authors= new StringBuilder();
 
-                //String sectionName = results.getString("sectionName");
-
-
-                News singleNew = new News(title, URL, sectionName);
+                News singleNew = new News(title, URL, sectionName,authorName,date);
 
                 news.add(singleNew);
             }
@@ -170,10 +180,10 @@ public final class QueryUtils {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the earthquake JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the  JSON results", e);
         }
 
-        // Return the list of earthquakes
+        // Return the list of Networks
         return news ;
     }
 

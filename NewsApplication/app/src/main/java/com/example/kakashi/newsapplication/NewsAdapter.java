@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.zip.Inflater;
 
 public class NewsAdapter extends ArrayAdapter<News> {
-    public NewsAdapter(@NonNull Context context, @NonNull List<News> objects) {
+    NewsAdapter(@NonNull Context context, @NonNull List<News> objects) {
         super(context, 0, objects);
 
     }
@@ -29,12 +29,21 @@ public class NewsAdapter extends ArrayAdapter<News> {
                     R.layout.activity_main, parent, false);
         }
         News currentPosition= getItem(position);
+
         TextView webUrlTextView= convertView.findViewById(R.id.weburl);
         webUrlTextView.setText(currentPosition.getWebURL());
+
         TextView webTitle= convertView.findViewById(R.id.webtitle);
         webTitle.setText(currentPosition.getWebTitle());
+
         TextView sectionName= convertView.findViewById(R.id.section_name);
         sectionName.setText(currentPosition.getSectionName());
+
+        TextView authorName= convertView.findViewById(R.id.author_name);
+        authorName.setText(currentPosition.getAuthorName());
+
+        TextView dateTextView= convertView.findViewById(R.id.date);
+        dateTextView.setText(currentPosition.getmDate());
 
         return convertView;
     }

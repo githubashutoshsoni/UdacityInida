@@ -1,6 +1,10 @@
 package com.example.kakashi.newsapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -13,6 +17,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,21 +28,28 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import timber.log.Timber;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>>{
-    private static final String GUARDIANURL = "https://content.guardianapis.com/search?api-key=b668cc83-f233-4a68-81fc-6da3709a5249";
-    static NewsAdapter newsAdapter;
-   @BindView(R.id.server_error) TextView emptyTextView;
 
+    private final static String GUARDIANURL = "https://content.guardianapis.com/search?api-key=b668cc83-f233-4a68-81fc-6da3709a5249&show-tags=contributor";
+    static NewsAdapter newsAdapter;
+    //to see if internet is there, then 1  or else it is 0
+    int internet=1;
+   @BindView(R.id.server_error)
+    TextView emptyTextView;
+   @ BindView(R.id.progress)
+    ProgressBar progressBar;
 
    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_list);
 
+        Timber.plant();
         newsAdapter= new NewsAdapter(this, new ArrayList<News>());
 
-        ListView newsListView= (ListView) findViewById(R.id.news_list_view);
+        ListView newsListView= findViewById(R.id.news_list_view);
         newsListView.setAdapter(newsAdapter);
 
         newsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -61,7 +73,16 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     @Override
     public Loader onCreateLoader(int i, @Nullable Bundle bundle) {
 
-        return new NewsLoader(this, GUARDIANURL);
+      //  progressBar.setVisibility(View.VISIBLE);
+       if(isConnectedToInternet(this))
+       {
+            internet=1;
+           return new NewsLoader(this, GUARDIANURL);
+       }
+       else{
+           internet=0;
+           return new NewsLoader(this, "");
+       }
     }
 
 
@@ -71,18 +92,31 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Log.i("Earthquake", "onloadfinished");
        //clear the adapter
         newsAdapter.clear();
-        //
           if (data != null && !data.isEmpty()) {
             newsAdapter.addAll(data);
         }
         else{
-             emptyTextView.setText(getString(R.string.no_internet));
+             if(internet==0){
+                 emptyTextView.setText(getString(R.string.no_internet));
+             }
+             else
+              emptyTextView.setText(getString(R.string.no_news));
+
           }
-    }
+    progressBar.setVisibility(View.GONE);
+   }
 
 
     @Override
     public void onLoaderReset(@NonNull Loader loader) {
     newsAdapter.clear();
+    }
+    public static boolean  isConnectedToInternet(Context context){
+        boolean isConnected= false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobile = connectivityManager .getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        isConnected= (wifi.isAvailable() && wifi.isConnectedOrConnecting() || (mobile.isAvailable() && mobile.isConnectedOrConnecting()));
+        return isConnected;
     }
 }

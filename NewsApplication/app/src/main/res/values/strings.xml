@@ -2,5 +2,6 @@
     <string name="app_name">News Application</string>
     <string name="network_setting_title">Network Settings</string>
     <string name="location_wise_key">location_wise_key</string>
-    <string name="no_internet">Sorry, No internet connection try again after a few minutes..</string>
+    <string name="no_news">no news available, please reload the app or check after some time</string>
+    <string name="no_internet">no Internet available, make sure to see if you\'re wifi is on or you are connected to the internet</string>
 </resources>

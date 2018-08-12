@@ -3,12 +3,20 @@ package com.example.kakashi.newsapplication;
 public class News {
     private String webTitle;
     private String webURL;
-    private String SectionName;
+    private String sectionName;
+    private String authorName;
+    private String mDate;
 
-    public News(String webTitle, String webURL, String sectionName) {
+    public String getmDate() {
+        return mDate;
+    }
+
+    public News(String webTitle, String webURL, String sectionName, String authorName, String date) {
         this.webTitle = webTitle;
         this.webURL = webURL;
-        SectionName = sectionName;
+        this.sectionName = sectionName;
+        this.authorName= authorName;
+        this.mDate= date;
     }
 
     public String getWebTitle() {
@@ -20,6 +28,10 @@ public class News {
     }
 
     public String getSectionName() {
-        return SectionName;
+        return sectionName;
+    }
+
+    public String getAuthorName() {
+        return authorName;
     }
 }
