@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    android:title="@string/network_setting_title"
-    ><!--
+    android:title="@string/network_setting_title">
+    <EditTextPreference
+        android:defaultValue="@string/settings_min_news_count_default"
+        android:key="@string/settings_min_news_count_key"
+        android:inputType="number"
+        android:selectAllOnFocus="true"
+        android:title="@string/settings_min_news_count_label"
+        />
+    <EditTextPreference
+        android:defaultValue="@string/settings_section_default"
+        android:title="@string/settings_sections_label"
+        android:inputType="text"
+        android:selectAllOnFocus="true"
+        android:key="@string/settings_sections_key" />
     <ListPreference
-        android:title="location"
-        android:key="@string/location_wise_key"
-        android:entries=""
-        android:entryValues=""
-        android:defaultValue=""
-
-        /-->
+        android:defaultValue="@string/settings_order_by_newest_value"
+        android:title="@string/settings_order_by_label"
+        android:key="@string/settings_order_by_key"
+        android:entries="@array/settings_order_by_labels"
+        android:entryValues="@array/settings_order_by_values"
+        />
 </PreferenceScreen>

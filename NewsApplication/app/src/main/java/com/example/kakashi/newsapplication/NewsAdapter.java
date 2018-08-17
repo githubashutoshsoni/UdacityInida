@@ -28,21 +28,21 @@ public class NewsAdapter extends ArrayAdapter<News> {
             convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.activity_main, parent, false);
         }
-        News currentPosition= getItem(position);
+        News currentPosition = getItem(position);
 
-        TextView webUrlTextView= convertView.findViewById(R.id.weburl);
+        TextView webUrlTextView = convertView.findViewById(R.id.weburl);
         webUrlTextView.setText(currentPosition.getWebURL());
 
-        TextView webTitle= convertView.findViewById(R.id.webtitle);
+        TextView webTitle = convertView.findViewById(R.id.webtitle);
         webTitle.setText(currentPosition.getWebTitle());
 
-        TextView sectionName= convertView.findViewById(R.id.section_name);
+        TextView sectionName = convertView.findViewById(R.id.section_name);
         sectionName.setText(currentPosition.getSectionName());
 
-        TextView authorName= convertView.findViewById(R.id.author_name);
+        TextView authorName = convertView.findViewById(R.id.author_name);
         authorName.setText(currentPosition.getAuthorName());
 
-        TextView dateTextView= convertView.findViewById(R.id.date);
+        TextView dateTextView = convertView.findViewById(R.id.date);
         dateTextView.setText(currentPosition.getmDate());
 
         return convertView;
