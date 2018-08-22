@@ -15,8 +15,8 @@ public class News {
         this.webTitle = webTitle;
         this.webURL = webURL;
         this.sectionName = sectionName;
-        this.authorName = authorName;
-        this.mDate = date;
+        this.authorName= authorName;
+        this.mDate= date;
     }
 
     public String getWebTitle() {
