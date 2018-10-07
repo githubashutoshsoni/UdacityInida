@@ -1,25 +1,63 @@
 package com.example.kakashi.inventoryapplication;
 
+import android.app.LoaderManager;
+import android.content.ContentUris;
 import android.content.ContentValues;
+import android.content.CursorLoader;
+import android.content.Intent;
+import android.content.Loader;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.kakashi.inventoryapplication.data.InventoryContract.InventoryEntries;
 import com.example.kakashi.inventoryapplication.data.InventoryDbHelper;
+import com.example.kakashi.inventoryapplication.data.InventoryProvider;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private InventoryDbHelper mDbHelper;
+    TextView ProductName;
+    TextView quantityTextView;
+    TextView supplierTextView;
+    TextView phoneTextView;
+    ItemCursorAdapter mAdapter;
+    private static final int INVENTORY_LOADER = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ProductName= findViewById(R.id.name);
+        quantityTextView= findViewById(R.id.supplier_name);
+        quantityTextView= findViewById(R.id.quantity);
+        supplierTextView= findViewById(R.id.supplier_name);
+        phoneTextView= findViewById(R.id.phone_no);
+
+        ListView listView= findViewById(R.id.list);
+
+
+        mAdapter= new ItemCursorAdapter(this,null);
+        listView.setAdapter(mAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
+                Intent intent= new Intent(MainActivity.this, ProductDetail.class);
+                Uri currentUri= ContentUris.withAppendedId(InventoryEntries.CONTENT_URI,id);
+                intent.setData(currentUri);
+                startActivity(intent);
+            }
+        });
+        getLoaderManager().initLoader(INVENTORY_LOADER,null,this);
     }
 
     @Override
@@ -28,67 +66,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void insertData() {
-        // Insert into database.
-        mDbHelper = new InventoryDbHelper(this);
-
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-
+    private void saveData() {
         ContentValues values = new ContentValues();
+        values.put(InventoryEntries.COLUMN_PRODUCT_NAME, "PEN");
+        values.put(InventoryEntries.COLUMN_SUPPLIER, "ASIA");
+        values.put(InventoryEntries.COLUMN_QUANTITY, "12");
+        values.put(InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER, "71234");
+        values.put(InventoryEntries.COLUMN_PRICE,"200");
 
-        values.put(InventoryEntries.COLUMN_PRODUCT_NAME, "Shampoo");
-        values.put(InventoryEntries.COLUMN_PRICE, 300);
-        values.put(InventoryEntries.COLUMN_QUANTITY, 5);
-        values.put(InventoryEntries.COLUMN_SUPPLIER, InventoryEntries.SUPPLIER_LOCAL);
-        values.put(InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER, 9900);
+        Uri newUri = getContentResolver().insert(InventoryEntries.CONTENT_URI, values);
 
-        long error = db.insert(InventoryEntries.TABLE_NAME, null, values);
-        if (error == -1)
-            Toast.makeText(MainActivity.this, "error while inserting into database", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(MainActivity.this, "Success", Toast.LENGTH_SHORT).show();
 
     }
 
-    private void queryData() {
-        /**
-         * Query the database.
-         * Always close the cursor when you're done reading from it.
-         * This releases all its resources and makes it invalid.
-         */
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        String[] projection = {
-                InventoryEntries._ID,
-                InventoryEntries.COLUMN_PRODUCT_NAME,
-                InventoryEntries.COLUMN_SUPPLIER,
-                InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER,
-                InventoryEntries.COLUMN_PRICE,
-                InventoryEntries.COLUMN_QUANTITY
-        };
-        Cursor cursor = db.query(InventoryEntries.TABLE_NAME, projection, null, null, null, null, null);
-        TextView mainActivityTextView = (TextView) findViewById(R.id.main_activity);
-        try {
-            mainActivityTextView.setText("Checking if this works");
-            mainActivityTextView.append(InventoryEntries._ID + " " +
-                    InventoryEntries.COLUMN_QUANTITY + " " +
-                    InventoryEntries.COLUMN_PRICE + " " + InventoryEntries.COLUMN_SUPPLIER + " "
-                    + InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER + " " + InventoryEntries.COLUMN_PRODUCT_NAME
-                    + "\n"
-            );
-            int idColumnIndex = cursor.getColumnIndex(InventoryEntries._ID);
-            int productName = cursor.getColumnIndex(InventoryEntries.COLUMN_PRODUCT_NAME);
-            int supplier = cursor.getColumnIndex(InventoryEntries.COLUMN_SUPPLIER);
-
-            while (cursor.moveToNext()) {
-                int currentId = cursor.getInt(idColumnIndex);
-                String currentProduct = cursor.getString(productName);
-                mainActivityTextView.append(currentId + currentProduct);
-            }
-        } finally {
-
-            cursor.close();
-        }
-
+    void deleteAllPets(){
+        int rowsDeleted = getContentResolver().delete(InventoryEntries.CONTENT_URI, null, null);
+        Log.v("MainActivity", rowsDeleted + " rows deleted from Inventory database");
 
     }
 
@@ -96,11 +89,47 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.dummy:
-                insertData();
-                queryData();
-                break;
+                saveData();
+                return true;
 
+            case R.id.delete:
+                deleteAllPets();
+                return true;
+            case R.id.insert:
+                Intent intent= new Intent(MainActivity.this, ProductDetail.class);
+                startActivity(intent);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int i,  Bundle bundle) {
+        String[] projection = {
+                InventoryEntries._ID,
+                InventoryEntries.COLUMN_PRICE,
+                InventoryEntries.COLUMN_PRODUCT_NAME };
+
+        // This loader will execute the ContentProvider's query method on a background thread
+        return new CursorLoader(this,   // Parent activity context
+                InventoryEntries.CONTENT_URI,   // Provider content URI to query
+                projection,             // Columns to include in the resulting Cursor
+                null,                   // No selection clause
+                null,                   // No selection arguments
+                null);
+    }
+
+    @Override
+    public void onLoadFinished(android.content.Loader<Cursor> loader, Cursor cursor) {
+        mAdapter.swapCursor(cursor);
+
+    }
+
+    @Override
+    public void onLoaderReset(android.content.Loader<Cursor> loader) {
+        mAdapter.swapCursor(null);
+
+    }
+
 }

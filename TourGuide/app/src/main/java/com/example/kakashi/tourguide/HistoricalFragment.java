@@ -40,16 +40,16 @@ public class HistoricalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView= inflater.inflate(R.layout.list_items, container, false);
-        final ArrayList<Places> places= new ArrayList<Places>();
+        View rootView = inflater.inflate(R.layout.list_items, container, false);
+        final ArrayList<Places> places = new ArrayList<Places>();
 
-        places.add(new Places(getString(R.string.vivekanada_house_historical),getString(R.string.time_vivek_ananda),getString(R.string.address_vivek_ananda),R.drawable.vivekananda_house_,"this "));
-        places.add(new Places(getString(R.string.semmozhi_poonga_historical),getString(R.string.time_gmc),getString(R.string.address_semmozhi_poonga),R.drawable.semmozi_poonga));
-        places.add(new Places(getString(R.string.government_chennai_historical),getString(R.string.time_ambattur),getString(R.string.address_government_museum),R.drawable.government_museum));
-        places.add(new Places(getString(R.string.fort_st_george_historical),getString(R.string.time_ambattur),getString(R.string.address_fort_st),R.drawable.fort_st_george));
+        places.add(new Places(getString(R.string.vivekanada_house_historical), getString(R.string.time_vivek_ananda), getString(R.string.address_vivek_ananda), R.drawable.vivekananda_house_, "this "));
+        places.add(new Places(getString(R.string.semmozhi_poonga_historical), getString(R.string.time_gmc), getString(R.string.address_semmozhi_poonga), R.drawable.semmozi_poonga));
+        places.add(new Places(getString(R.string.government_chennai_historical), getString(R.string.time_ambattur), getString(R.string.address_government_museum), R.drawable.government_museum));
+        places.add(new Places(getString(R.string.fort_st_george_historical), getString(R.string.time_ambattur), getString(R.string.address_fort_st), R.drawable.fort_st_george));
 
-        final PlacesAdapter placesAdapter= new PlacesAdapter(getActivity(),places,R.color.yellow);
-        final ListView listView= (ListView) rootView.findViewById(R.id.list_items);
+        final PlacesAdapter placesAdapter = new PlacesAdapter(getActivity(), places, R.color.yellow);
+        final ListView listView = (ListView) rootView.findViewById(R.id.list_items);
 
         listView.setAdapter(placesAdapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -57,13 +57,13 @@ public class HistoricalFragment extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Log.i("sometag", "onItemClick: fine working :)");
                 Places place = places.get(i);
-                Intent intent= new Intent(getContext(),HistoricalFragment.class);
-                intent.putExtra("description",place.getmDetails());
+                Intent intent = new Intent(getContext(), HistoricalFragment.class);
+                intent.putExtra("description", place.getmDetails());
                 startActivity(intent);
             }
         });
 
-        return  rootView;
+        return rootView;
     }
 }
 

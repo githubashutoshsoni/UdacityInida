@@ -12,5 +12,16 @@
 
     </item>
 
+    <item
+        android:id="@+id/delete"
+        android:title="delete data"
+        app:showAsAction="never">
+
+    </item>
+    <item
+        android:id="@+id/insert"
+        android:title="insert data"
+        app:showAsAction="never">
+    </item>
 
 </menu>
