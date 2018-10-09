@@ -24,16 +24,10 @@ public class ItemCursorAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView productNameTextView= view.findViewById(R.id.name);
+        TextView productNameTextView= view.findViewById(R.id.name_edit);
         TextView quantityTextView= view.findViewById(R.id.quantity);
         TextView priceTextView= view.findViewById(R.id.price);
 
-        if(cursor.size()>0)
-        {   cursor.moveToNext()
-            while(cursor.next){
-
-            }
-        }
 
         int nameIndex= cursor.getColumnIndex(InventoryContract.InventoryEntries.COLUMN_PRODUCT_NAME);
         int priceIndex= cursor.getColumnIndex(InventoryContract.InventoryEntries.COLUMN_PRICE);
@@ -45,8 +39,8 @@ public class ItemCursorAdapter extends CursorAdapter {
 
 
         productNameTextView.setText(name);
-        quantityTextView.setText(price);
-       priceTextView.setText(quantity);
+        quantityTextView.setText(String.valueOf(price));
+        priceTextView.setText(String.valueOf(quantity));
 
     }
 }

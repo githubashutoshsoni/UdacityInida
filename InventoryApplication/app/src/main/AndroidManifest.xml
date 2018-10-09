@@ -16,13 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ProductDetail"></activity>
         <provider
             android:authorities="com.example.kakashi.inventoryapplication"
-            android:name="com.example.kakashi.inventoryapplication.data.InventoryProvider"
+            android:name=".data.InventoryProvider"
             android:enabled="true"
             android:exported="true">
         </provider>
-        <activity android:name=".ProductDetail"></activity>
     </application>
 
 </manifest>

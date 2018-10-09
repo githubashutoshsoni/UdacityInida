@@ -13,7 +13,7 @@
     </item>
 
     <item
-        android:id="@+id/delete"
+        android:id="@+id/delete_edit"
         android:title="delete data"
         app:showAsAction="never">
 

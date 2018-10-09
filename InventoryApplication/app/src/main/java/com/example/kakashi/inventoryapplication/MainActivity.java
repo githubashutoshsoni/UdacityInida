@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import com.example.kakashi.inventoryapplication.data.InventoryContract.InventoryEntries;
 import com.example.kakashi.inventoryapplication.data.InventoryDbHelper;
-import com.example.kakashi.inventoryapplication.data.InventoryProvider;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private InventoryDbHelper mDbHelper;
@@ -36,11 +35,11 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ProductName= findViewById(R.id.name);
-        quantityTextView= findViewById(R.id.supplier_name);
+        ProductName= findViewById(R.id.name_edit);
+        quantityTextView= findViewById(R.id.supplier_name_edit);
         quantityTextView= findViewById(R.id.quantity);
-        supplierTextView= findViewById(R.id.supplier_name);
-        phoneTextView= findViewById(R.id.phone_no);
+        supplierTextView= findViewById(R.id.supplier_name_edit);
+        phoneTextView= findViewById(R.id.phone_no_edit);
 
         ListView listView= findViewById(R.id.list);
 
@@ -70,9 +69,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         ContentValues values = new ContentValues();
         values.put(InventoryEntries.COLUMN_PRODUCT_NAME, "PEN");
         values.put(InventoryEntries.COLUMN_SUPPLIER, "ASIA");
-        values.put(InventoryEntries.COLUMN_QUANTITY, "12");
-        values.put(InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER, "71234");
-        values.put(InventoryEntries.COLUMN_PRICE,"200");
+        values.put(InventoryEntries.COLUMN_QUANTITY, 12);
+        values.put(InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER, 714);
+        values.put(InventoryEntries.COLUMN_PRICE,200);
 
         Uri newUri = getContentResolver().insert(InventoryEntries.CONTENT_URI, values);
 
@@ -92,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 saveData();
                 return true;
 
-            case R.id.delete:
+            case R.id.delete_edit:
                 deleteAllPets();
                 return true;
             case R.id.insert:
@@ -122,7 +121,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(android.content.Loader<Cursor> loader, Cursor cursor) {
-        mAdapter.swapCursor(cursor);
+        if(cursor.getCount()<1 || cursor==null){
+            Log.e("SOMETAGHERE", "onLoadFinished:less ");
+
+        }
+        cursor.moveToFirst();
+        if(cursor.getCount()==0){
+            Log.e("SOMETAGHERE", "onLoadFinished: Items inserted at 0");
+
+            mAdapter.swapCursor(cursor);
+
+        }
+
 
     }
 

@@ -73,6 +73,7 @@ public class InventoryProvider extends ContentProvider {
         int match=sUriMatcher.match(uri);
         switch (match) {
             case INVENTORY:
+
                 return insertInventory(uri, contentValues);
             default:
                 throw new IllegalArgumentException("Insertion is not supported for " + uri);
@@ -97,6 +98,7 @@ public class InventoryProvider extends ContentProvider {
            throw new IllegalArgumentException("empty phone number");
        if(price==null)
            throw new IllegalArgumentException("enter price");
+
        SQLiteDatabase sqLiteDatabase= mDbHelper.getWritableDatabase();
        long id  = sqLiteDatabase.insert(InventoryEntries.TABLE_NAME,null,contentValues);
        if(id==-1){

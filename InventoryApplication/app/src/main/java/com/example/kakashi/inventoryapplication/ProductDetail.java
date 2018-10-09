@@ -1,6 +1,5 @@
 package com.example.kakashi.inventoryapplication;
 
-import android.app.LoaderManager;
 import android.content.ContentValues;
 import android.support.v4.content.CursorLoader;
 
@@ -35,15 +34,13 @@ public class ProductDetail extends AppCompatActivity implements android.support.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_detail);
 
-        priceTextView= findViewById(R.id.price);
-        productName= findViewById(R.id.name);
-        quantityTextView= findViewById(R.id.supplier_name);
-        quantityTextView= findViewById(R.id.quantity);
-        supplierTextView= findViewById(R.id.supplier_name);
-        phoneTextView= findViewById(R.id.phone_no);
+        priceTextView= findViewById(R.id.price_edit);
+        productName= findViewById(R.id.name_edit);
+        quantityTextView= findViewById(R.id.QuantityEdit);
+        supplierTextView= findViewById(R.id.supplier_name_edit);
+        phoneTextView= findViewById(R.id.phone_no_edit);
 
         mCurrentInventoryUri= getIntent().getData();
-
         if(mCurrentInventoryUri==null)
         {
             setTitle("add an inventory");
