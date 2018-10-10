@@ -7,12 +7,11 @@
     android:layout_height="match_parent">
 
     <!--TODO HELLO carlos I want this button to work. But for some reason it's not working.
-    TODO I run into two issues for the time being...
-    todo 1) uncomment this button and run. this will show a button but my onclick won't work
-    todo 2) only when you uncomment my listonclick work. that is My ProductDetails class work on uncommenting this button
+    TODO when removing the button my clickOnAdapter function works but when I use this below button it does not why?
+
     -->
 
-    <!-- <Button
+    <Button
         android:id="@+id/subtract"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +25,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/price"
         app:layout_constraintTop_toTopOf="@+id/price" />
-        -->
     <TextView
         android:id="@+id/name_edit"
         android:layout_width="wrap_content"

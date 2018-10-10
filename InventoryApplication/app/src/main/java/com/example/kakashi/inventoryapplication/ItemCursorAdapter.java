@@ -49,18 +49,26 @@ public class ItemCursorAdapter extends CursorAdapter {
         quantityTextView.setText(String.valueOf(price));
         priceTextView.setText(String.valueOf(quantity));
 
-//        Button sale= view.findViewById(R.id.subtract);
-//        sale.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(context,"hello",Toast.LENGTH_SHORT);
-//                Uri contentUri= ContentUris.withAppendedId(InventoryContract.InventoryEntries.CONTENT_URI,idColumnIndex);
-//                ContentValues contentValues= new ContentValues();
-//                contentValues.put(InventoryContract.InventoryEntries.COLUMN_QUANTITY,quantity-1);
-//                context.getContentResolver().update(contentUri,contentValues,null,null);
-//
-//            }
-//        });
+        Button sale= view.findViewById(R.id.subtract);
+        sale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if(quantity<0){
+                    Toast.makeText(context,"can't do hehehe",Toast.LENGTH_SHORT);
+
+                }
+                else{
+
+                    Toast.makeText(context,"hello",Toast.LENGTH_SHORT);
+                    Uri contentUri= ContentUris.withAppendedId(InventoryContract.InventoryEntries.CONTENT_URI,idColumnIndex);
+                    ContentValues contentValues= new ContentValues();
+                    contentValues.put(InventoryContract.InventoryEntries.COLUMN_QUANTITY,quantity-1);
+                    context.getContentResolver().update(contentUri,contentValues,null,null);
+
+                }
+            }
+        });
 
     }
 }

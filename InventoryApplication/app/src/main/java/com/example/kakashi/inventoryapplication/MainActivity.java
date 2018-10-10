@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     TextView productName;
     TextView quantityTextView;
     TextView supplierTextView;
+    View emptyView;
     TextView phoneTextView;
     ItemCursorAdapter mAdapter;
     private static final int INVENTORY_LOADER = 0;
@@ -41,7 +42,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         phoneTextView= findViewById(R.id.phone_no_edit);
 
         ListView listView= findViewById(R.id.list);
-
+        emptyView= findViewById(R.id.empty);
+        listView.setEmptyView(emptyView);
 
         mAdapter= new ItemCursorAdapter(this,null);
         listView.setAdapter(mAdapter);
