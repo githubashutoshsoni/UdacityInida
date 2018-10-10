@@ -13,7 +13,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Phone number"
+        android:text="123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/supplier_name_edit" />
 
@@ -40,7 +40,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Quantity"
+        android:text="12"
         app:layout_constraintEnd_toStartOf="@+id/plus_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_edit" />
@@ -54,7 +54,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Product Name"
+        android:text="Product"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,13 +105,13 @@
         app:layout_constraintTop_toBottomOf="@+id/supplier_name_edit" />
 
     <EditText
+        android:id="@+id/price_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="price"
-        android:id="@+id/price_edit"
+        android:text="123"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phone_no_edit" />
 </android.support.constraint.ConstraintLayout>

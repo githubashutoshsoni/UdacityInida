@@ -2,7 +2,6 @@ package com.example.kakashi.inventoryapplication;
 
 import android.content.ContentValues;
 import android.support.v4.content.CursorLoader;
-
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.net.Uri;
@@ -80,6 +79,8 @@ public class ProductDetail extends AppCompatActivity implements android.support.
         String priceString = priceTextView.getText().toString().trim();
         String supplierString = supplierTextView.getText().toString().trim();
         String quantityString= quantityTextView.getText().toString().trim();
+        String phoneString= phoneTextView.getText().toString().trim();
+
         // Check if this is supposed to be a new pet
         // and check if all the fields in the editor are blank
         if (mCurrentInventoryUri == null &&
@@ -90,13 +91,14 @@ public class ProductDetail extends AppCompatActivity implements android.support.
             return;
         }
         int quantity=Integer.parseInt(quantityString);
-
+        int phone= Integer.parseInt(phoneString);
 
          ContentValues values = new ContentValues();
         values.put(InventoryContract.InventoryEntries.COLUMN_PRODUCT_NAME, nameString);
         values.put(InventoryContract.InventoryEntries.COLUMN_PRICE, priceString);
         values.put(InventoryContract.InventoryEntries.COLUMN_QUANTITY,quantity );
-
+        values.put(InventoryContract.InventoryEntries.COLUMN_SUPPLIER,supplierString);
+        values.put(InventoryContract.InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER,phone);
         // Determine if this is a new or existing pet by checking if mCurrentPetUri is null or not
         if (mCurrentInventoryUri == null) {
             // This is a NEW pet, so insert a new pet into the provider,
@@ -180,6 +182,7 @@ public class ProductDetail extends AppCompatActivity implements android.support.
                 InventoryContract.InventoryEntries._ID,
                 InventoryContract.InventoryEntries.COLUMN_PRODUCT_NAME,
                 InventoryContract.InventoryEntries.COLUMN_QUANTITY,
+                InventoryContract.InventoryEntries.COLUMN_PRICE,
                 InventoryContract.InventoryEntries.COLUMN_SUPPLIER,
                 InventoryContract.InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER };
 

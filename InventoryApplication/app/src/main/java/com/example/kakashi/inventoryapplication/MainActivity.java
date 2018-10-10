@@ -23,7 +23,7 @@ import com.example.kakashi.inventoryapplication.data.InventoryDbHelper;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
     private InventoryDbHelper mDbHelper;
-    TextView ProductName;
+    TextView productName;
     TextView quantityTextView;
     TextView supplierTextView;
     TextView phoneTextView;
@@ -35,8 +35,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ProductName= findViewById(R.id.name_edit);
-        quantityTextView= findViewById(R.id.supplier_name_edit);
+        productName = findViewById(R.id.name_edit);
         quantityTextView= findViewById(R.id.quantity);
         supplierTextView= findViewById(R.id.supplier_name_edit);
         phoneTextView= findViewById(R.id.phone_no_edit);
@@ -108,6 +107,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         String[] projection = {
                 InventoryEntries._ID,
                 InventoryEntries.COLUMN_PRICE,
+                InventoryEntries.COLUMN_QUANTITY,
                 InventoryEntries.COLUMN_PRODUCT_NAME };
 
         // This loader will execute the ContentProvider's query method on a background thread
@@ -126,8 +126,8 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
         }
         cursor.moveToFirst();
-        if(cursor.getCount()==0){
-            Log.e("SOMETAGHERE", "onLoadFinished: Items inserted at 0");
+        if(cursor.getCount()==0 || cursor.getCount()>0){
+            Log.e("SOMETAGHERE", "onLoadFinished: Items inserted ");
 
             mAdapter.swapCursor(cursor);
 

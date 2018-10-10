@@ -171,20 +171,20 @@ public class InventoryProvider extends ContentProvider {
 
         if (values.containsKey(InventoryEntries.COLUMN_PRICE)) {
             Integer price = values.getAsInteger(InventoryEntries.COLUMN_PRICE);
-            if (price != null && price < 0) {
+            if (price == null && price < 0) {
                 throw new IllegalArgumentException("Inventory requires valid price");
             }
         }
         if (values.containsKey(InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER)) {
             Integer phone = values.getAsInteger(InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER);
-            if (phone != null && phone < 0) {
+            if (phone == null && phone < 0) {
                 throw new IllegalArgumentException("Inventory requires valid phone");
             }
         }
 
         if (values.containsKey(InventoryEntries.COLUMN_SUPPLIER)) {
             String supplier = values.getAsString(InventoryEntries.COLUMN_SUPPLIER);
-            if (supplier != null ) {
+            if (supplier == null ) {
                 throw new IllegalArgumentException("Inventory requires valid supplier");
             }
         }
