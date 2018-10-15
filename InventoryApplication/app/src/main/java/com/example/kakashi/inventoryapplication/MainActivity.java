@@ -37,27 +37,27 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         setContentView(R.layout.activity_main);
 
         productName = findViewById(R.id.name_edit);
-        quantityTextView= findViewById(R.id.quantity);
-        supplierTextView= findViewById(R.id.supplier_name_edit);
-        phoneTextView= findViewById(R.id.phone_no_edit);
+        quantityTextView = findViewById(R.id.quantity);
+        supplierTextView = findViewById(R.id.supplier_name_edit);
+        phoneTextView = findViewById(R.id.phone_no_edit);
 
-        ListView listView= findViewById(R.id.list);
-        emptyView= findViewById(R.id.empty);
+        ListView listView = findViewById(R.id.list);
+        emptyView = findViewById(R.id.empty);
         listView.setEmptyView(emptyView);
 
-        mAdapter= new ItemCursorAdapter(this,null);
+        mAdapter = new ItemCursorAdapter(this, null);
         listView.setAdapter(mAdapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long id) {
-                Intent intent= new Intent(MainActivity.this, ProductDetail.class);
-                Uri currentUri= ContentUris.withAppendedId(InventoryEntries.CONTENT_URI,id);
+                Intent intent = new Intent(MainActivity.this, ProductDetail.class);
+                Uri currentUri = ContentUris.withAppendedId(InventoryEntries.CONTENT_URI, id);
                 intent.setData(currentUri);
                 startActivity(intent);
             }
         });
-        getLoaderManager().initLoader(INVENTORY_LOADER,null,this);
+        getLoaderManager().initLoader(INVENTORY_LOADER, null, this);
     }
 
     @Override
@@ -72,14 +72,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         values.put(InventoryEntries.COLUMN_SUPPLIER, "ASIA");
         values.put(InventoryEntries.COLUMN_QUANTITY, 12);
         values.put(InventoryEntries.COLUMN_SUPPLIER_PHONE_NUMBER, 714);
-        values.put(InventoryEntries.COLUMN_PRICE,200);
+        values.put(InventoryEntries.COLUMN_PRICE, 200);
 
         Uri newUri = getContentResolver().insert(InventoryEntries.CONTENT_URI, values);
 
 
     }
 
-    void deleteAllPets(){
+    void deleteAllInventory() {
         int rowsDeleted = getContentResolver().delete(InventoryEntries.CONTENT_URI, null, null);
         Log.v("MainActivity", rowsDeleted + " rows deleted from Inventory database");
 
@@ -93,10 +93,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
                 return true;
 
             case R.id.delete_edit:
-                deleteAllPets();
+                deleteAllInventory();
                 return true;
             case R.id.insert:
-                Intent intent= new Intent(MainActivity.this, ProductDetail.class);
+                Intent intent = new Intent(MainActivity.this, ProductDetail.class);
                 startActivity(intent);
                 return true;
         }
@@ -105,12 +105,14 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     @Override
-    public Loader<Cursor> onCreateLoader(int i,  Bundle bundle) {
+    public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
         String[] projection = {
                 InventoryEntries._ID,
                 InventoryEntries.COLUMN_PRICE,
                 InventoryEntries.COLUMN_QUANTITY,
-                InventoryEntries.COLUMN_PRODUCT_NAME };
+                InventoryEntries.COLUMN_PRODUCT_NAME,
+                InventoryEntries.COLUMN_SUPPLIER
+        };
 
         // This loader will execute the ContentProvider's query method on a background thread
         return new CursorLoader(this,   // Parent activity context
@@ -123,12 +125,12 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
     @Override
     public void onLoadFinished(android.content.Loader<Cursor> loader, Cursor cursor) {
-        if(cursor.getCount()<1 || cursor==null){
+        if (cursor.getCount() < 1 || cursor == null) {
             Log.e("SOMETAGHERE", "onLoadFinished:less ");
 
         }
         cursor.moveToFirst();
-        if(cursor.getCount()==0 || cursor.getCount()>0){
+        if (cursor.getCount() == 0 || cursor.getCount() > 0) {
             Log.e("SOMETAGHERE", "onLoadFinished: Items inserted ");
 
             mAdapter.swapCursor(cursor);

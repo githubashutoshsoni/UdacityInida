@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ProductDetail"></activity>
+        <activity android:name=".ProductDetail"
+            android:parentActivityName=".MainActivity"
+            ></activity>
         <provider
             android:authorities="com.example.kakashi.inventoryapplication"
             android:name=".data.InventoryProvider"

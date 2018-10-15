@@ -4,7 +4,7 @@ import android.content.ContentResolver;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
-public class InventoryContract {
+public final class InventoryContract {
 
 
     public static final String CONTENT_AUTHORITY = "com.example.kakashi.inventoryapplication";
@@ -32,7 +32,6 @@ public class InventoryContract {
 
         public final static String TABLE_NAME = "inventory";
 
-        public final static String _ID = BaseColumns._ID;
 
 
         public final static String COLUMN_PRODUCT_NAME = "name";

@@ -1,6 +1,8 @@
 package com.example.kakashi.inventoryapplication;
 
 import android.content.ContentValues;
+import android.content.Intent;
+import android.os.Build;
 import android.support.v4.content.CursorLoader;
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -8,11 +10,15 @@ import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.telecom.Call;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,6 +34,15 @@ public class ProductDetail extends AppCompatActivity implements android.support.
     private static final int EXISTING_INVENTORY_LOADER = 0;
     Uri mCurrentInventoryUri;
 
+    AlertDialog.Builder builder;
+
+
+    Button plusButton;
+    Button minusButton;
+    Button deleteButton;
+    Button callButton;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +54,17 @@ public class ProductDetail extends AppCompatActivity implements android.support.
         supplierTextView= findViewById(R.id.supplier_name_edit);
         phoneTextView= findViewById(R.id.phone_no_edit);
 
+        plusButton= findViewById(R.id.plus_button);
+        minusButton= findViewById(R.id.minus_button);
+        deleteButton= findViewById(R.id.delete_edit);
+        callButton= findViewById(R.id.call_edit);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+
         mCurrentInventoryUri= getIntent().getData();
         if(mCurrentInventoryUri==null)
         {
@@ -47,9 +73,81 @@ public class ProductDetail extends AppCompatActivity implements android.support.
         else{
             setTitle("Edit an Inventory");
             getSupportLoaderManager().initLoader(EXISTING_INVENTORY_LOADER, null, this);
-
         }
+        final ContentValues cv= new ContentValues();
+        plusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String quantityString= quantityTextView.getText().toString();
+                int quantityInt= Integer.parseInt(quantityString);
+                quantityTextView.setText(String.valueOf(quantityInt+1));
+                cv.put(InventoryContract.InventoryEntries.COLUMN_QUANTITY,quantityInt+1);
+                getContentResolver().update(mCurrentInventoryUri,cv,null,null);
+            }
+        });
 
+        minusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+
+                String quantityString= quantityTextView.getText().toString();
+
+                int quantityInt= Integer.parseInt(quantityString);
+                if(quantityInt<0){
+                    Toast.makeText(ProductDetail.this, "no negative quants", Toast.LENGTH_SHORT).show();
+                return;
+                }
+                else{
+                    quantityTextView.setText(String.valueOf(quantityInt-1));
+                    cv.put(InventoryContract.InventoryEntries.COLUMN_QUANTITY,quantityInt-1);
+                    getContentResolver().update(mCurrentInventoryUri,cv,null,null);
+                }
+
+            }
+        });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                builder.setTitle("Delete entry")
+                        .setMessage("Are you sure you want to delete this entry?")
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // continue with delete
+                                getContentResolver().delete(mCurrentInventoryUri,null,null);
+                                finish();
+                            }
+                        })
+                        .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // do nothing
+                            }
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
+            }
+        });
+
+        callButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent callIntent= new Intent(Intent.ACTION_DIAL);
+                String phoneNumber= phoneTextView.getText().toString();
+                if(TextUtils.isEmpty(phoneNumber))
+                {
+                    Toast.makeText(ProductDetail.this,"error",Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    callIntent.setData(Uri.parse("tel:" + phoneNumber));
+                    if (callIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(callIntent);
+                    }
+                }
+            }
+        });
     }
 
 
@@ -84,8 +182,11 @@ public class ProductDetail extends AppCompatActivity implements android.support.
         // Check if this is supposed to be a new pet
         // and check if all the fields in the editor are blank
         if (mCurrentInventoryUri == null &&
-                TextUtils.isEmpty(nameString) && TextUtils.isEmpty(quantityString) &&
-                TextUtils.isEmpty(supplierString)) {
+                TextUtils.isEmpty(nameString) || TextUtils.isEmpty(quantityString) ||
+                TextUtils.isEmpty(supplierString)|| TextUtils.isEmpty(quantityString) ||
+                TextUtils.isEmpty(phoneString))
+                {
+                    Toast.makeText(ProductDetail.this,"somethingiswrong add correct values bro",Toast.LENGTH_SHORT).show();
             // Since no fields were modified, we can return early without creating a new pet.
             // No need to create ContentValues and no need to do any ContentProvider operations.
             return;
@@ -147,6 +248,8 @@ public class ProductDetail extends AppCompatActivity implements android.support.
                 return true;
             // Respond to a click on the "Delete" menu option
             case R.id.action_delete:
+
+                finish();
                 // Pop up confirmation dialog for deletion
                    return true;
             // Respond to a click on the "Up" arrow button in the app bar
@@ -228,14 +331,9 @@ public class ProductDetail extends AppCompatActivity implements android.support.
 
         }
     }
-
     @Override
     public void onLoaderReset(@NonNull Loader<Cursor> loader) {
 
     }
-
-
-
-
 
 }
